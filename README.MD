@@ -269,4 +269,59 @@ Serve para que consigamos manipular outros eventos atraves da passagem de parame
 Obs: Nunca mecher atraves dele nas props.
 
 
- 
+ ## Filtros 
+
+ Eles servem para processar variaveis que estão bindado no html. Podendo processar a informação sem mudar.
+
+ O filtro sempre recebe um valor e retorna algo. 
+
+ Criamos um campo de filtro:
+
+ filters:{
+
+    processarNome: function(value){
+        return value.toUpperCase()
+    }
+
+Em seguida passamos o nome do filtro que criamos dentro de onde desejamos que ela seja alterada. 
+
+<h4>Nome: {{cliente.nome | processarEmail }}</h4>
+
+Assim, ele vai trabalhar em cima da solicitação que passamos detro do filtro. Alterando a visualização e não o dado. 
+
+
+## Computed Properties 
+
+Formas de criar variaveis dinamicas. Assim podemos criar novas strings com dados de diferentes formas:
+
+computed: {
+      idEspecial: function(){
+          return (this.cliente.email + this.cliente.nome + this.cliente.idade).toUpperCase()
+      }
+  }
+
+Criamos um computed e em seguidas criamos uma função onde passamos os metodos e unimos os dados .
+
+
+## Computed e como instalar bibliotecas no Vue
+
+Podemos adicionar funções baixadas por bibliotecas para fazer as coisas como a loadash, auxiliando assim com o trabalho. Para isso so precisamos usar os comando npm e o nome da bibliotecas. 
+
+E em seguidas utilizamos da seguinte forma:
+
+computed: {
+    orderClientes: function(){
+      return _.orderBy(this.clientes,["nome"], ['asc'])
+    }
+  }
+}
+
+
+## Como usar framework css no vue
+
+No curso vamos utilzar o bulma. Mas podemos também utilizar qualquer outro que não utilize de Jquery para rodar os codigos em JavaScript. 
+
+Para usar, primeiro vamos no main.js e la importamos o bulma ou qualquer outro projeto. 
+
+import "../node_modules/bulma/css/bulma.css"
+
