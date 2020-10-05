@@ -179,8 +179,21 @@ Ele pode receber mais de uma condição seguida das outras.
 
 
 # Diretivas condicionais com for
+Podemos utilizar para que assim não fiquemos repetindo codigo. Ele trabalha semelhando ao foreach, e para usar temos que ter um array.
+Para utilizarmos precisamos passar uma key, que vai diferenciar um dado do outro.
 
+Podemos chamar e utilizar da seguinte forma:
 
+<div v-for="cliente in clientes" :key="cliente.id">
+            <Cliente :cliente="cliente"/>
+</div>
+
+Podemos ainda utilizar de mais uma agregação chamada de index, para exibir a mais no codigo e mostrar sua posição no código.
+
+<div v-for="(cliente,index) in clientes" :key="cliente.id">
+           <h1>{{index}}</h1>
+            <Cliente :cliente="cliente"/>
+</div>
 
 ## Classes Condicionais
 
@@ -192,3 +205,68 @@ Como no caso de um cliente com conta premium. Passamos a seguinte informação d
 <div :class="{'cliente': !Isprimium, 'cliente-premium': Isprimium}">
 
 Dessa forma estamos dizendo que se a classe for diferente de Isprimium a que vai prevalecar é a classe Cliente, caso seja verdadeira vai apresentar a classe Isprimium.
+
+## Eventos
+
+Conseguimos capturar eventos de clique do mouse, focar com o mouse e dentre outros. Isso são os eventos que podem ocorrer dentro de uma aplicação.
+
+Para declararmos um evento podemos onde queremos chamar utilizando de um @, e definir qual evento queremos capturar. Ex:
+
+<button @click="mudarCor">Mudar cor!</button>
+
+E em seguidas precisamos criar um methods na área de return. Ex:
+
+methods:{
+        mudarCor: function(){
+            this.Isprimium = !this.IsprimiumIsprimium
+        }
+    }
+
+Assim dentro do methods, passamos a função que desejamos que seja cumprida quando clicarmos no botão ele vai mudar de cor, como no exemplo acima.
+
+## Formulario
+
+Serve para cadastro de usuario. Assim podemos fazer de uma forma na qual o cliente digite seus dados e ele vai para o front. Para isso podemos fazer da seguinte forma:
+
+Primeiro criamos as variaveis para receber os dados. Assim:
+
+nomeFiled: "",
+emailField: "",
+idadeFiled: 0,
+
+Em seguidas precisamos criar um methods para que assim ele possa receber os dados e armazenar. 
+
+methods:{
+    cadastrarUsuario: function(){
+      this.clientes.push({
+        nome: this.nomeFiled,
+        email: this.emailField,
+        idade: this.idadeFiled,
+        id: Date.now()
+      })
+      this.nomeFiled = "",
+      this.emailField = "",
+      this.idadeFiled = 0
+ Usamos o this para referenciar o que está de fora. E em seguidas removemos os campos.
+
+ ## Validação de formulario
+Para isso podemos utilizar logica pura. Como podemos ver abaixo:
+
+ if (this.nomeFiled == "" || this.nomeFiled == " " || this.nomeFiled.length < 3) {
+        this.ErroNome == true;
+      } else {
+        this.clientes.push({
+        nome: this.nomeFiled,
+        email: this.emailField,
+        idade: this.idadeFiled,
+        id: Date.now()
+      }
+
+## Emissão de Eventos
+
+Serve para que consigamos manipular outros eventos atraves da passagem de parametros.
+
+Obs: Nunca mecher atraves dele nas props.
+
+
+ 
